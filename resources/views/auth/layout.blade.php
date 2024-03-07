@@ -38,8 +38,10 @@
     {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
 </head>
 
-<body class="hold-transition login-page">
-    @yield('content')
+<body class="hold-transition {{ request()->is('login') ? 'login-page' : 'register-page' }}">
+    <div class="{{ request()->is('login') ? 'login-box' : 'register-box' }}">
+        @yield('content')
+    </div>
 
     <!-- jQuery -->
     <script src="{{ asset('theme/plugins/jquery/jquery.min.js') }}"></script>
