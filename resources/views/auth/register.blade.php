@@ -1,152 +1,103 @@
-@extends('auth.layout')
+@extends('layouts.tailwind')
 
 @section('content')
-    {{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
+    <div aria-colindex="1" aria-label="content" class="mt-0 pt-10 mb-0" id="register">
+        <div class="flex justify-content-center w-full justify-center">
+            <div class="card bg-base-200 outline outline-1 outline-base-content/25 rounded-sm w-full max-w-xl">
+                <div class="card-title mx-auto mt-10">{{ __('Register') }}</div>
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" class="font-normal flex flex-col gap-3">
                         @csrf
 
-                        <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Name') }}</label>
+                        <div class="flex flex-col">
+                            <label for="name"
+                                class="md:text-lg text-base font-normal text-left">{{ __('Username') }}</label>
 
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                            <div class="w-full">
+                                <input id="name" type="text"
+                                    class="input rounded-sm transzition-all !outline-2 !outline-offset-2 input-bordered w-full{{ $errors->has('name') ? ' input-error' : '' }}"
+                                    name="name" value="{{ old('name') }}" required autofocus>
 
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                @if ($errors->has('name'))
+                                    <div role="alert"
+                                        class="alert alert-error mt-3 py-[6px] rounded-sm w-fit font-normal">
+                                        <div>{{ $errors->first('name') }}</div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="email"
+                                class="md:text-lg text-base font-normal text-left">{{ __('E-Mail Address') }}</label>
+
+                            <div class="w-full">
+                                <input id="email" type="email"
+                                    class="input rounded-sm transzition-all !outline-2 !outline-offset-2 input-bordered w-full{{ $errors->has('email') ? ' input-error' : '' }}"
+                                    name="email" value="{{ old('email') }}" required>
+
+                                @if ($errors->has('email'))
+                                    <div role="alert"
+                                        class="alert alert-error mt-3 py-[6px] rounded-sm w-fit font-normal">
+                                        <div>{{ $errors->first('email') }}</div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="password"
+                                class="md:text-lg text-base font-normal text-left">{{ __('Password') }}</label>
+
+                            <div class="w-full">
+                                <input id="password" type="password"
+                                    class="input rounded-sm transzition-all !outline-2 !outline-offset-2 input-bordered w-full{{ $errors->has('password') ? ' input-error' : '' }}"
+                                    name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <div role="alert"
+                                        class="alert alert-error mt-3 py-[6px] rounded-sm w-fit font-normal">
+                                        <div>{{ $errors->first('password') }}</div>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="flex flex-col">
+                            <label for="password-confirm"
+                                class="md:text-lg text-base font-normal text-left">{{ __('Confirm Password') }}</label>
+
+                            <div class="w-full">
+                                <input id="password-confirm" type="password"
+                                    class="input rounded-sm transition-all !outline-2 !outline-offset-2 input-bordered w-full"
+                                    name="password_confirmation" required>
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                        @if (config('settings.reCaptchStatus'))
+                            <div class="form-group">
+                                <div class="col-sm-6 col-sm-offset-4">
+                                    <div class="g-recaptcha" data-sitekey="{{ config('settings.reCaptchSite') }}">
+                                    </div>
+                                </div>
                             </div>
+                        @endif
+
+                        <div class="flex sm:flex-row flex-col-reverse justify-center items-center gap-3 mt-5 w-full">
+                            <a href="{{ route('welcome') }}"
+                                class="btn dark:hover:bg-neutral-200 hover:bg-neutral-800 borders-none bg-base-content sm:w-1/3 w-full grow sm:max-w-[25%] min-w-min rounded-sm text-neutral-50 dark:text-neutral-950">{{ __('Back') }}</a>
+                            <button type="submit"
+                                class="btn btn-primary sm:w-1/3 w-full grow min-w-min rounded-sm text-neutral-50 dark:text-neutral-950">
+                                {{ __('Register') }}
+                            </button>
                         </div>
 
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-</div> --}}
+@endsection
 
-    <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-            <a href="#" class="h1">{{ __('Register') }}</a>
-        </div>
-        <div class="card-body">
-            <p class="login-box-msg">Request a new membership</p>
-
-            <form method="POST" class="mb-3" action="{{ route('register') }}">
-                @csrf
-
-                <div class="input-group mb-3">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                        name="name" value="{{ old('name') }}" placeholder="Full name" required autocomplete="name"
-                        autofocus>
-
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                        name="email" value="{{ old('email') }}" placeholder="Email" required autocomplete="email">
-
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-envelope"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                        name="password" required autocomplete="new-password" placeholder="Password">
-
-                    @error('password')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="input-group mb-3">
-                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required
-                        autocomplete="new-password" placeholder="Retype password">
-
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">{{ __('Register') }}</button>
-            </form>
-
-            <a href="{{ route('login') }}" class="text-center">I already have a membership</a>
-        </div>
-        <!-- /.form-box -->
-    </div><!-- /.card -->
+@section('footer_scripts')
+    @if (config('settings.reCaptchStatus'))
+        <script src='https://www.google.com/recaptcha/api.js'></script>
+    @endif
 @endsection
