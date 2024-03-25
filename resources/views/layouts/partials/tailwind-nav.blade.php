@@ -105,7 +105,7 @@
                 @endauth
             @elseif (Route::has('login'))
                 @auth
-                    <a aria-label="nav-link" href="{{ route('public.home') }}" class="nav-links">Dashboard</a>
+                    <a aria-label="nav-link" href="{{ route('dashboard') }}" class="nav-links">Dashboard</a>
                 @else
                     <a aria-label="nav-link" href="{{ route('login') }}" class="nav-links">Login</a>
 
