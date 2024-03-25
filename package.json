@@ -3,10 +3,22 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
+        "serve": "php artisan serve",
         "build": "vite build"
     },
+    "dependencies": {
+        "@iconify/json": "^2.2.190",
+        "autoprefixer": "^10.4.19",
+        "daisyui": "^4.7.3",
+        "postcss": "^8.4.38",
+        "purgecss": "^5.0.0",
+        "tailwindcss": "^3.4.1"
+    },
     "devDependencies": {
+        "@iconify/tailwind": "^0.1.4",
         "@popperjs/core": "^2.11.6",
+        "@tailwindcss/typography": "^0.5.10",
+        "async": "^3.2.5",
         "axios": "^1.6.4",
         "bootstrap": "^5.2.3",
         "laravel-vite-plugin": "^1.0.0",
