@@ -1,14 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use Illuminate\View\View;
 use Illuminate\Http\RedirectResponse;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -25,8 +26,8 @@ class RoleController extends Controller
      */
     public function index(): View
     {
-        return view('roles.index', [
-            'roles' => Role::orderBy('id', 'DESC')->paginate(3)
+        return view('admin.roles.index', [
+            'roles' => Role::orderBy('id', 'DESC')->paginate(5)
         ]);
     }
 
@@ -35,7 +36,7 @@ class RoleController extends Controller
      */
     public function create(): View
     {
-        return view('roles.create', [
+        return view('admin.roles.create', [
             'permissions' => Permission::get()
         ]);
     }
@@ -64,7 +65,7 @@ class RoleController extends Controller
             ->where("role_id", $role->id)
             ->select('name')
             ->get();
-        return view('roles.show', [
+        return view('admin.roles.show', [
             'role' => $role,
             'rolePermissions' => $rolePermissions
         ]);
@@ -83,7 +84,7 @@ class RoleController extends Controller
             ->pluck('permission_id')
             ->all();
 
-        return view('roles.edit', [
+        return view('admin.roles.edit', [
             'role' => $role,
             'permissions' => Permission::get(),
             'rolePermissions' => $rolePermissions

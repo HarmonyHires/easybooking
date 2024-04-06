@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
@@ -27,8 +28,8 @@ class ProductController extends Controller
      */
     public function index(): View
     {
-        return view('products.index', [
-            'products' => Product::latest()->paginate(3)
+        return view('admin.products.index', [
+            'products' => Product::latest()->paginate(10)
         ]);
     }
 
@@ -37,7 +38,7 @@ class ProductController extends Controller
      */
     public function create(): View
     {
-        return view('products.create');
+        return view('admin.products.create');
     }
 
     /**
@@ -55,7 +56,7 @@ class ProductController extends Controller
      */
     public function show(Product $product): View
     {
-        return view('products.show', [
+        return view('admin.products.show', [
             'product' => $product
         ]);
     }
@@ -65,7 +66,7 @@ class ProductController extends Controller
      */
     public function edit(Product $product): View
     {
-        return view('products.edit', [
+        return view('admin.products.edit', [
             'product' => $product
         ]);
     }
