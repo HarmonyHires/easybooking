@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
@@ -29,8 +30,8 @@ class UserController extends Controller
      */
     public function index(): View
     {
-        return view('users.index', [
-            'users' => User::latest('id')->paginate(3)
+        return view('admin.users.index', [
+            'users' => User::latest('id')->paginate(10)
         ]);
     }
 
@@ -39,7 +40,7 @@ class UserController extends Controller
      */
     public function create(): View
     {
-        return view('users.create', [
+        return view('admin.users.create', [
             'roles' => Role::pluck('name')->all()
         ]);
     }
@@ -64,7 +65,7 @@ class UserController extends Controller
      */
     public function show(User $user): View
     {
-        return view('users.show', [
+        return view('admin.users.show', [
             'user' => $user
         ]);
     }
@@ -81,7 +82,7 @@ class UserController extends Controller
             }
         }
 
-        return view('users.edit', [
+        return view('admin.users.edit', [
             'user' => $user,
             'roles' => Role::pluck('name')->all(),
             'userRoles' => $user->roles->pluck('name')->all()

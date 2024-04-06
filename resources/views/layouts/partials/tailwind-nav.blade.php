@@ -16,6 +16,11 @@
         </div>
         <div class="flex-none hidden lg:flex gap-3 navbar-end w-fit grow">
             <a aria-label="nav-link" href="{{ route('welcome') }}" class="nav-links">Homepage</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
+            <a href="{{ route('logout') }}" class="nav-links" onclick="event.preventDefault();
+                document.getElementById('logout-form').submit();">Logout</a>
             @if (Route::currentRouteName() != 'welcome')
                 @auth
                     @role('admin')
@@ -105,7 +110,11 @@
                 @endauth
             @elseif (Route::has('login'))
                 @auth
+                    @if(Auth::user()->hasRole('Admin|Super Admin'))
                     <a aria-label="nav-link" href="{{ route('dashboard') }}" class="nav-links">Dashboard</a>
+                    @else
+                    <a aria-label="nav-link" href="{{ route('dashboard-user') }}" class="nav-links">Dashboard</a>
+                    @endif
                 @else
                     <a aria-label="nav-link" href="{{ route('login') }}" class="nav-links">Login</a>
 

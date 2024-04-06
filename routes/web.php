@@ -1,10 +1,10 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RoleController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\RoleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -24,10 +24,15 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    Route::resources([
+        'roles' => RoleController::class,
+        'users' => UserController::class,
+        'products' => ProductController::class,
+    ]);
+});
 
-Route::resources([
-    'roles' => RoleController::class,
-    'users' => UserController::class,
-    'products' => ProductController::class,
-]);
+Route::get('/dashboard', function () {
+    return 'Dashboard user';
+})->name('dashboard-user');
