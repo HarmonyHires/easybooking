@@ -27,7 +27,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3">
+                    <div class="mb-3 info-box">
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-up"></i></span>
 
                         <div class="info-box-content">
@@ -44,7 +44,7 @@
                 <div class="clearfix hidden-md-up"></div>
 
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3">
+                    <div class="mb-3 info-box">
                         <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
 
                         <div class="info-box-content">
@@ -57,7 +57,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-12 col-sm-6 col-md-3">
-                    <div class="info-box mb-3">
+                    <div class="mb-3 info-box">
                         <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
 
                         <div class="info-box-content">
@@ -92,16 +92,9 @@
                         <a class="btn btn-success" href="{{ route('users.index') }}">
                             <i class="bi bi-people"></i> Manage Users</a>
                     @endcanany
-                    @canany(['create-product', 'edit-product', 'delete-product'])
-                        <a class="btn btn-warning" href="{{ route('products.index') }}">
-                            <i class="bi bi-bag"></i> Manage Products</a>
-                    @endcanany
                     <p>&nbsp;</p>
                 </div>
             </div>
-
-
-
         </div><!--/. container-fluid -->
     </section>
     <!-- /.content -->
