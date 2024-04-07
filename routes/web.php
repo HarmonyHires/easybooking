@@ -4,7 +4,6 @@ use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
-use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -28,8 +27,7 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resources([
         'roles' => RoleController::class,
-        'users' => UserController::class,
-        'products' => ProductController::class,
+        'users' => UserController::class
     ]);
 });
 

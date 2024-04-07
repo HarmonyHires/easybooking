@@ -1,5 +1,22 @@
 @extends('admin.layouts.app')
 
+@section('content-header')
+    <div class="content-header">
+        <div class="px-3 container-fluid">
+            <div class="mb-2 row">
+                <div class="col-sm-6">
+                    <h1 class="m-0">Roles</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item active">roles</li>
+                    </ol>
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
+@endsection
 @section('content')
     <div class="row justify-content-center">
         <div class="col-md-12">
@@ -7,7 +24,8 @@
                 <div class="card-header">Manage Roles</div>
                 <div class="card-body">
                     @can('create-role')
-                        <a href="{{ route('roles.create') }}" class="btn btn-success btn-sm my-2"><i class="bi bi-plus-circle"></i>
+                        <a href="{{ route('roles.create') }}" class="my-2 btn btn-success btn-sm"><i
+                                class="bi bi-plus-circle"></i>
                             Add New Role</a>
                     @endcan
                     <table class="table table-striped table-bordered">

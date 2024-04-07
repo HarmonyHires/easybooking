@@ -39,8 +39,8 @@
 </head>
 
 <body class="dark-mode sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
-    <div class="wrapper">
 
+    <div class="wrapper">
         <!-- Preloader -->
         <div class="preloader flex-column justify-content-center align-items-center">
             <img class="animation__wobble" src="{{ asset('theme/dist/img/AdminLTELogo.png') }}" alt="AdminLTELogo"
@@ -53,6 +53,8 @@
         <aside class="control-sidebar control-sidebar-dark"></aside>
 
         <div class="content-wrapper">
+            @yield('content-header')
+
             <section class="content">
                 <div class="container-fluid">
                     <div class="row justify-content-center">

@@ -5,15 +5,12 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="index3.html" class="nav-link">Home</a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-            <a href="#" class="nav-link">Contact</a>
+            <a href="/" class="nav-link">Home</a>
         </li>
     </ul>
 
     <!-- Right navbar links -->
-    <ul class="navbar-nav ml-auto">
+    <ul class="ml-auto navbar-nav">
         <!-- Navbar Search -->
         <li class="nav-item">
             <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -50,7 +47,7 @@
             <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
                 <a href="#" class="dropdown-item">
                     <div class="media align-items-center">
-                        <i class="bi bi-person-fill-gear mr-3"></i>
+                        <i class="mr-3 bi bi-person-fill-gear"></i>
                         <h3 class="dropdown-item-title">
                             {{ Auth::user()->roles[0]['name'] }}
                         </h3>
@@ -60,7 +57,7 @@
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
                     <div class="media align-items-center">
-                        <i class="bi bi-person-circle mr-3"></i>
+                        <i class="mr-3 bi bi-person-circle"></i>
                         <h3 class="dropdown-item-title">
                             {{ Auth::user()->name }}
                         </h3>
@@ -70,7 +67,7 @@
                 <div class="dropdown-divider"></div>
                 <a href="#" class="dropdown-item">
                     <div class="media align-items-center">
-                        <i class="bi bi-gear-fill mr-3"></i>
+                        <i class="mr-3 bi bi-gear-fill"></i>
                         <h3 class="dropdown-item-title">
                             Settings
                         </h3>
@@ -82,7 +79,7 @@
                     onclick="event.preventDefault();
                 document.getElementById('logout-form').submit();">
                     <div class="media align-items-center">
-                        <i class="bi bi-gear-fill mr-3"></i>
+                        <i class="mr-3 bi bi-box-arrow-right"></i>
                         <h3 class="dropdown-item-title text-red">
                             {{ __('Logout') }}
                         </h3>
