@@ -1,9 +1,11 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PermissionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\CategoriesController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -27,10 +29,9 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::resources([
         'roles' => RoleController::class,
-        'users' => UserController::class
+        'users' => UserController::class,
+        'permissions' => PermissionController::class,
+        'categories' => CategoriesController::class
     ]);
 });
 
-Route::get('/dashboard', function () {
-    return 'Dashboard user';
-})->name('dashboard-user');

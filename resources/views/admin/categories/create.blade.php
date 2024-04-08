@@ -8,14 +8,14 @@
         <div class="card">
             <div class="card-header">
                 <div class="float-start">
-                    Add New Permission
+                    Add New Category
                 </div>
                 <div class="float-end">
-                    <a href="{{ route('permissions.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
+                    <a href="{{ route('categories.index') }}" class="btn btn-primary btn-sm">&larr; Back</a>
                 </div>
             </div>
             <div class="card-body">
-                <form action="{{ route('permissions.store') }}" method="post">
+                <form action="{{ route('categories.store') }}" method="post">
                     @csrf
 
                     <div class="mb-3 row">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="mb-3 row">
-                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Permission">
+                        <input type="submit" class="col-md-3 offset-md-5 btn btn-primary" value="Add Category">
                     </div>
 
                 </form>

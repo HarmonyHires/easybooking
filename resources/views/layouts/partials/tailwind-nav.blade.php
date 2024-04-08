@@ -113,7 +113,7 @@
                     @if(Auth::user()->hasRole('Admin|Super Admin'))
                     <a aria-label="nav-link" href="{{ route('dashboard') }}" class="nav-links">Dashboard</a>
                     @else
-                    <a aria-label="nav-link" href="{{ route('dashboard-user') }}" class="nav-links">Dashboard</a>
+                    <a aria-label="nav-link" href="{{ route('dashboard') }}" class="nav-links">Dashboard</a>
                     @endif
                 @else
                     <a aria-label="nav-link" href="{{ route('login') }}" class="nav-links">Login</a>
