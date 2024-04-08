@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class DashboardController extends Controller
 {
@@ -15,7 +16,7 @@ class DashboardController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('role:Admin|Super Admin');
+        $this->middleware('role:Super Admin');
     }
 
     /**
@@ -23,7 +24,7 @@ class DashboardController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(): View
     {
         return view('admin.dashboard');
     }

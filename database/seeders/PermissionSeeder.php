@@ -20,6 +20,9 @@ class PermissionSeeder extends Seeder
             'create-user',
             'edit-user',
             'delete-user',
+            'create-permission',
+            'edit-permission',
+            'delete-permission',
         ];
 
         foreach ($permissions as $permission) {
