@@ -11,7 +11,7 @@ class StoreVenueRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,12 @@ class StoreVenueRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:250|unique:venues,name',
+            'city' => 'required|string|max:250',
+            'phone' => 'required|string|max:250',
+            'description' => 'string',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'category_id' => 'required|exists:categories,id',
         ];
     }
 }
