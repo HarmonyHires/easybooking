@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\CategoriesController;
+use App\Http\Controllers\Admin\VenueController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -33,5 +34,14 @@ Route::prefix('admin')->middleware(['auth'])->group(function () {
         'permissions' => PermissionController::class,
         'categories' => CategoriesController::class
     ]);
+
+    Route::controller(VenueController::class)->group(function () {
+        Route::get('venues', 'index')->name('venues.index');
+        Route::get('venues/create', 'create')->name('venues.create');
+        Route::post('venues', 'store')->name('venues.store');
+        Route::get('venus/edit/{slug}', 'edit')->name('venues.edit');
+        Route::get('venus/show/{slug}', 'show')->name('venues.show');
+        Route::delete('venues/{slug}', 'destroy')->name('venues.destroy');
+    });
 });
 

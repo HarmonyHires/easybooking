@@ -11,16 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('venues', function (Blueprint $table) {
+        Schema::create('fields', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-            $table->text('description')->nullable();
-            $table->string('images')->nullable();
+            $table->text('description');
+            $table->string('images');
             $table->string('phone');
             $table->string('email');
-            $table->string('city');
-            $table->enum('status', ['pending', 'approved', 'banned'])->default('pending');
+            $table->string('address');
+            $table->string('field_type');
+            $table->string('floor_type');
+            $table->decimal('price');
             $table->timestamps();
         });
     }
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('venues');
+        Schema::dropIfExists('fields');
     }
 };

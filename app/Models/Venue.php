@@ -9,15 +9,15 @@ class Venue extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'slug', 'description', 'images', 'phone', 'email', 'city', 'status', 'user_id', 'category_id'];
+    protected $fillable = ['name', 'slug', 'description', 'images', 'phone', 'email', 'city', 'status',];
 
     public function categories()
     {
-        return $this->hasMany(Categories::class);
+        return $this->belongsToMany(Categories::class);
     }
 
-    public function user()
+    public function fields()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsToMany(Field::class, 'venues_has_fields');
     }
 }

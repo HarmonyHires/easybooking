@@ -34,6 +34,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('venues.index') }}"
+                        class="nav-link {{ request()->routeIs('venues.index') }}">
+                        <i class="nav-icon bi bi-geo-fill"></i>
+                        <p>
+                            Venues
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-header">User Managements</li>
                 <li class="nav-item">
