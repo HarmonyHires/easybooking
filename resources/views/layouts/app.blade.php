@@ -3,7 +3,7 @@
 
 <head>
     @yield('head')
-    @include('layouts.partials.tailwind-head')
+    @include('layouts.partials.head')
 
     <title>
         @hasSection('template_title')
@@ -17,22 +17,22 @@
     </script>
 </head>
 
-<body class="antialiased">
-    <div class="drawer">
-        <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
+<body>
+    <div class="sidebar-nav">
+        <input id="sidebar-nav" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col gap-0">
             <!-- Navbar -->
-            @include('layouts.partials.tailwind-nav')
+            @include('layouts.partials.nav')
             <!-- Content -->
             @hasSection('content')
                 @yield('content')
             @endif
-            @include('layouts.partials.tailwind-footer')
+            @include('layouts.partials.footer')
         </div>
         <!-- Sidebar -->
-        @include('layouts.partials.tailwind-sidebar')
+        @include('layouts.partials.sidebar')
     </div>
-    @include('layouts.partials.tailwind-script')
+    @include('layouts.partials.script')
     @yield('script')
 </body>
 

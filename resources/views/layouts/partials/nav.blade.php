@@ -5,7 +5,7 @@
             </div>
         </div>
         <div class="flex-none lg:hidden navbar-end items-center flex gap-2">
-            <label for="my-drawer-3" aria-label="open sidebar" class="btn btn-circle btn-ghost">
+            <label for="sidebar-nav" aria-label="open sidebar" class="btn btn-circle btn-ghost">
                 <span class="icon-[heroicons-solid--menu-alt-3] text-2xl"></span>
             </label>
             <label class="swap swap-rotate btn btn-ghost btn-circle">

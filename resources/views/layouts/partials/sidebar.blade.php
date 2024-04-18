@@ -1,7 +1,7 @@
 <div class="drawer-side z-50">
-    <label for="my-drawer-3" aria-label="close sidebar" class="drawer-overlay"></label>
+    <label for="sidebar-nav" aria-label="close sidebar" class="drawer-overlay"></label>
     <ul class="flex flex-col gap-2 p-8 w-80 max-w-full min-h-full bg-base-100 shadow-lg">
-        <li class="w-full text-center font-bold text-xl">Portofolio</li>
+        <li class="w-full text-center font-bold text-xl">Menu</li>
         <li class="divider m-0"></li>
         <a aria-label="nav-link" href="{{ route('welcome') }}" class="nav-links justify-start"><span
                 class="text-2xl icon-[ic--round-home]"></span> Homepage</a>
