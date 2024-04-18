@@ -1,4 +1,4 @@
-@extends('layouts.tailwind')
+@extends('layouts.app')
 @section('content')
     <div aria-colindex="1" aria-label="content" class="mt-0 pt-10" id="home">
         <div class="bg-base-100 w-full">
