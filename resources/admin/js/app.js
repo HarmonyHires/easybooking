@@ -33,44 +33,42 @@ const AnimationFunction = () => {
     sectionArray.forEach(
         (section) => (sectionPosition[section.id] = section.offsetTop - offset)
     );
-    const updateNav = () => {
-        let scrollPosition =
-            document.documentElement.scrollTop || document.body.scrollTop;
-        for (id in sectionPosition) {
-            if (sectionPosition[id] <= scrollPosition) {
-                document
-                    .querySelectorAll("a[class*='-links'],a[class^='-links']")
-                    .forEach((e) => {
-                        e.ariaSelected = false;
-                    });
-                document
-                    .querySelectorAll(`a[class*='-links'][href='#${id}']`)
-                    .forEach((e) => {
-                        e.ariaSelected = true;
-                    });
+    document
+        .querySelector("#drawer-compactor")
+        .addEventListener("click", (e) => {
+            let btn = document.querySelector("#drawer-compactor");
+            if (btn.dataset.compact == "true") {
+                btn.dataset.compact = "false";
+                btn.classList.remove("w-full")
+                // document.querySelector("#drawer-title-parent").classList.remove("md:px-10");
+                document.querySelector("#drawer-title-parent").classList.remove("!px-2");
+                document.querySelector("#drawer-title").classList.remove("hidden");
+                document.querySelector("#sidebar-ul").classList.add("w-64","px-6");
+                document.querySelector("#sidebar-ul").classList.remove("w-20", "px-2");
+                document.querySelectorAll(".drawer-links-name").forEach((e) => {
+                    e.classList.remove(..."hidden".split(" "));
+                });
+                document.querySelectorAll(".drawer-links-icon").forEach((e) => {
+                    e.classList.remove(..."w-full".split(" "));
+                });
+            } else if (btn.dataset.compact == "false") {
+                btn.dataset.compact = "true";
+                btn.classList.add("w-full")
+                // document.querySelector("#drawer-title-parent").classList.add("md:px-10");
+                document.querySelector("#drawer-title-parent").classList.add("!px-2");
+                document.querySelector("#drawer-title").classList.add("hidden");
+                document.querySelector("#sidebar-ul").classList.remove("w-64","px-6");
+                document.querySelector("#sidebar-ul").classList.add("w-20", "px-2");
+                document.querySelectorAll(".drawer-links-name").forEach((e) => {
+                    e.classList.add(..."hidden".split(" "));
+                });
+                document.querySelectorAll(".drawer-links-icon").forEach((e) => {
+                    e.classList.add(..."w-full".split(" "));
+                });
             }
-        }
-    };
-    updateNav();
-    window.onscroll = updateNav;
+        });
 };
 document.addEventListener("DOMContentLoaded", (e) => {
-    if (window.scrollY > 0) {
-        document.querySelector(".navbar").classList.add("py-4", "shadow-md");
-    } else {
-        document.querySelector(".navbar").classList.remove("py-4", "shadow-md");
-    }
-    document.querySelector("#sidebar-nav").addEventListener("change", (e) => {
-        if (e.target.checked) {
-            document
-                .querySelector(".navbar")
-                .classList.add("py-4", "shadow-md");
-        } else {
-            document
-                .querySelector(".navbar")
-                .classList.remove("py-4", "shadow-md");
-        }
-    });
     let addScrollEvent = (element) => {
         element.addEventListener("click", function (e) {
             e.preventDefault();
@@ -86,16 +84,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
             });
         });
     };
-    document.querySelectorAll("[aria-label='nav-link']").forEach((el) => {
-        let li = document.createElement("li");
-        let link = el.cloneNode(true);
-        link.removeAttribute("class");
-        link.classList.add("drawer-links");
-        link.ariaLabe = "drawer-links";
-        addScrollEvent(link);
-        li.appendChild(link);
-        document.querySelector(".drawer-side > ul").appendChild(li);
-    });
     // Smooth scrolling for anchor links in navbar
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         addScrollEvent(anchor);
@@ -123,18 +111,7 @@ document.addEventListener("DOMContentLoaded", (e) => {
 });
 
 // Scroll up function
-document.addEventListener("scroll", (e) => {
-    if (window.scrollY > 0) {
-        document.querySelector(".navbar").classList.add("py-4", "shadow-md");
-    } else {
-        document.querySelector(".navbar").classList.remove("py-4", "shadow-md");
-    }
-    if (window.scrollY > 200) {
-        document.querySelector(".floating")?.classList?.remove?.("d-none");
-    } else {
-        document.querySelector(".floating")?.classList?.add?.("d-none");
-    }
-});
+document.addEventListener("scroll", (e) => {});
 
 function closeSidebar() {
     document.querySelector("#sidebar-nav").checked = false;

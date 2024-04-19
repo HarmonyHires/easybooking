@@ -17,8 +17,8 @@
     </script>
 </head>
 
-<body class="antialiased">
-    <div class="drawer lg:drawer-open h-screen">
+<body class="antialiased flex justify-center bg-base-200">
+    <div id="main" class="drawer lg:drawer-open h-screen 2xl:container bg-base-100">
         <input id="sidebar-nav" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col h-full">
             <!-- Navbar -->
