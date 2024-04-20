@@ -12,13 +12,12 @@
 
         <div class="w-full">This is your application dashboard.</div>
         @canany(['create-role', 'edit-role', 'delete-role'])
-            <a class="btn btn-primary" href="{{ route('roles.index') }}">
-                <i class="bi bi-person-fill-gear"></i> Manage Roles</a>
+            <a class="btn btn-primary text-primary-content me-5" href="{{ route('roles.index') }}">
+                <span class="icon-[ph--user-gear] text-2xl"></span> Manage Roles</a>
         @endcanany
         @canany(['create-user', 'edit-user', 'delete-user'])
-            <a class="btn btn-success" href="{{ route('users.index') }}">
-                <i class="bi bi-people"></i> Manage Users</a>
+            <a class="btn btn-accent text-accent-content" href="{{ route('users.index') }}">
+                <span class="icon-[fluent--people-settings-20-regular] text-2xl"></span> Manage Users</a>
         @endcanany
-        <p>&nbsp;</p>
     </div>
 @endsection

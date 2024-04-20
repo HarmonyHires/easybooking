@@ -33,18 +33,84 @@ const AnimationFunction = () => {
     sectionArray.forEach(
         (section) => (sectionPosition[section.id] = section.offsetTop - offset)
     );
+    let themes = [
+        "lightdim",
+        "light",
+        "dark",
+        "cupcake",
+        "bumblebee",
+        "emerald",
+        "corporate",
+        "synthwave",
+        "retro",
+        "cyberpunk",
+        "valentine",
+        "halloween",
+        "garden",
+        "forest",
+        "aqua",
+        "lofi",
+        "pastel",
+        "fantasy",
+        "wireframe",
+        "black",
+        "luxury",
+        "dracula",
+        "cmyk",
+        "autumn",
+        "business",
+        "acid",
+        "lemonade",
+        "night",
+        "coffee",
+        "winter",
+        "dim",
+        "nord",
+        "sunset",
+    ];
+    let themeUl = document.querySelector("#theme-ul");
+    let currentTheme = false;
+    themes.forEach((e, x) => {
+        if (window.localStorage.getItem("theme") == e) currentTheme = e;
+        themeUl.innerHTML += `<li data-theme="${e}" class="bg-transparent">
+        <input ${
+            e ? "checked='true'" : ""
+        } data-theme="${e}" type="radio" class="hidden peer" name="selected-theme" id="theme-${x}">
+        <label data-set-theme="${e}" data-act-class="ACTIVECLASS" for="theme-${x}" class="theme-changer flex gap-2 px-2 justify-between btn peer-checked:*:opacity-100">
+            <span class="icon-[fontisto--radio-btn-active] opacity-0 transition text-xl"></span>
+            <span class="grow text-left">${_.capitalize(e)}</span>
+            <div class="right-0 badge-lg badge bg-gradient-to-br from-primary to-secondary via-accent"></div>
+        </label>
+    </li>`;
+    });
+    requestAnimationFrame(() => {
+        if (currentTheme) {
+            document.querySelector(
+                `input[data-theme=${currentTheme}]`
+            ).checked = true;
+        }
+        themeChange(false, "admin-panel");
+    });
     document
         .querySelector("#drawer-compactor")
         .addEventListener("click", (e) => {
             let btn = document.querySelector("#drawer-compactor");
             if (btn.dataset.compact == "true") {
                 btn.dataset.compact = "false";
-                btn.classList.remove("w-full")
+                btn.classList.remove("w-full");
                 // document.querySelector("#drawer-title-parent").classList.remove("md:px-10");
-                document.querySelector("#drawer-title-parent").classList.remove("!px-2");
-                document.querySelector("#drawer-title").classList.remove("hidden");
-                document.querySelector("#sidebar-ul").classList.add("w-64","px-6");
-                document.querySelector("#sidebar-ul").classList.remove("w-20", "px-2");
+                document
+                    .querySelector("#drawer-title-parent")
+                    .classList.remove("!px-2");
+                document
+                    .querySelector("#drawer-title")
+                    .classList.remove("hidden");
+                document
+                    .querySelector("#sidebar-ul")
+                    .classList.add("w-64", "px-6");
+                document
+                    .querySelector("#sidebar-ul")
+                    .classList.remove("w-20", "px-2");
                 document.querySelectorAll(".drawer-links-name").forEach((e) => {
                     e.classList.remove(..."hidden".split(" "));
                 });
@@ -53,12 +119,23 @@ const AnimationFunction = () => {
                 });
             } else if (btn.dataset.compact == "false") {
                 btn.dataset.compact = "true";
-                btn.classList.add("w-full")
+                btn.classList.add("w-full");
                 // document.querySelector("#drawer-title-parent").classList.add("md:px-10");
-                document.querySelector("#drawer-title-parent").classList.add("!px-2");
+                document
+                    .querySelector("#drawer-title-parent")
+                    .classList.add("!px-2");
                 document.querySelector("#drawer-title").classList.add("hidden");
-                document.querySelector("#sidebar-ul").classList.remove("w-64","px-6");
-                document.querySelector("#sidebar-ul").classList.add("w-20", "px-2");
+                document
+                    .querySelector("#sidebar-ul")
+                    .classList.remove("w-64", "px-6");
+                // document
+                //     .querySelectorAll("#sidebar-ul > li:has( > input)")
+                //     .forEach((e) =>
+                //         console.log((e.querySelector("input").checked = false))
+                //     );
+                document
+                    .querySelector("#sidebar-ul")
+                    .classList.add("w-20", "px-2");
                 document.querySelectorAll(".drawer-links-name").forEach((e) => {
                     e.classList.add(..."hidden".split(" "));
                 });
@@ -99,9 +176,6 @@ document.addEventListener("DOMContentLoaded", (e) => {
             window.localStorage.setItem("theme", "lightdim");
             document.documentElement.dataset.theme = "lightdim";
         }
-    }
-    if (window.localStorage.getItem("theme") != "lightdim") {
-        document.querySelector("[data-toggle-theme]").checked = true;
     }
     document.querySelector(`a[href="${window.location.hash}"`) &&
         (document.querySelector(

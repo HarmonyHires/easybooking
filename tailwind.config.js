@@ -26,6 +26,7 @@ module.exports = {
         themes: [
             {
                 lightdim: {
+                    ...require("daisyui/src/theming/themes")["dark"],
                     "color-scheme": "light",
                     neutral: "#4C566A",
                     "neutral-content": "#D8DEE9",

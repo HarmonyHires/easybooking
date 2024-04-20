@@ -61,12 +61,57 @@
         @apply btn btn-ghost !h-auto min-h-0 py-2
         aria-selected:text-neutral-900 dark:aria-selected:text-neutral-100
         aria-selected:bg-slate-950/20 dark:aria-selected:bg-slate-50/10 aria-selected:font-semibold
-        font-medium rounded-sm;
+        font-medium;
     }
     .nav-links {
         @apply base-links lg:text-sm text-base rounded hidden;
     }
     .drawer-links {
         @apply base-links my-0 w-full justify-start lg:text-sm text-base;
+    }
+    .menu-custom :where(li ul):before {
+        position: absolute;
+        bottom: 0.75rem;
+        inset-inline-start: 0;
+        top: 0.75rem;
+        width: 2px;
+        --tw-bg-opacity: 1;
+        background-color: var(
+            --fallback-bc,
+            oklch(var(--bc) / var(--tw-bg-opacity))
+        );
+        opacity: 0.1;
+        content: "";
+    }
+    .menu-custom :where(li ul) {
+        padding-right: 0;
+        position: relative;
+        white-space: nowrap;
+        margin-inline-start: 1rem;
+        padding-inline-start: 0.5rem;
+    }
+    .menu-custom :where(li):not(.drawer-links) {
+        @apply collapse rounded-none;
+    }
+    .menu-custom :where(li):not(.drawer-links)::after {
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        display: block;
+        margin-top: -0.30rem;
+        height: 0.5rem;
+        width: 0.5rem;
+        transform: rotate(45deg);
+        transition-property: transform, margin-top;
+        transition-duration: 0.3s;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        content: "";
+        transform-origin: 75% 75%;
+        box-shadow: 2px 2px;
+        pointer-events: none;
+    }
+    .menu-custom :where(li):not(.drawer-links):has( > input:checked)::after {
+        transform: rotate(225deg);
+        margin-top: -0.20rem;
     }
 }

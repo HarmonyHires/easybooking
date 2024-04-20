@@ -1,4 +1,4 @@
-<footer class="footer transition-all bg-neutral-900 dark:bg-neutral-300 text-base-100">
+<footer class="footer transition-all bg-base-content text-base-100">
     <div class="container p-5 mx-auto flex sm:justify-between items-center justify-center max-sm:flex-col">
         <div class="flex gap-1">
             <a aria-label="Youtube" target="_blank" href=""
