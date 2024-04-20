@@ -41,10 +41,18 @@
                     </li>
                 </ul>
             </li>
-            <li class="drawer-links">
+            <a role="list" href="{{ route('dashboard') }}" class="drawer-links">
                 <span class="drawer-links-icon text-xl icon-[ic--round-home]"></span>
-                <span class="drawer-links-name">Beranda</span>
-            </li>
+                <span class="drawer-links-name">Dashboard</span>
+            </a>
+            <a role="list" href="{{ route('venues.index') }}" class="drawer-links">
+                <span class="drawer-links-icon text-xl icon-[ic--round-home]"></span>
+                <span class="drawer-links-name">Venue</span>
+            </a>
+            <a role="list" href="{{ route('categories.index') }}" class="drawer-links">
+                <span class="drawer-links-icon text-xl icon-[ic--round-home]"></span>
+                <span class="drawer-links-name">Venue</span>
+            </a>
             {{-- <li class="mb-1 max-lg:mb-4 rounded-full max-lg:opacity-0 max-w-full h-[2px] bg-primary/60"></li> --}}
         </ul>
     </div>
