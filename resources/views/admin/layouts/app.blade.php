@@ -17,14 +17,14 @@
     </script>
 </head>
 
-<body class="flex justify-center bg-base-200">
+<body data-barba="wrapper" class="flex justify-center bg-base-200">
     <div id="main" class="drawer lg:drawer-open h-screen 2xl:container bg-base-100">
         <input id="sidebar-nav" type="checkbox" class="drawer-toggle" />
         <div class="drawer-content flex flex-col h-full">
             <!-- Navbar -->
             @include('admin.layouts.partials.nav')
             <!-- Content -->
-            <div class="w-full  flex-1">
+            <div class="w-full flex-1" data-barba="container">
                 @hasSection('content')
                     @yield('content')
                 @endif

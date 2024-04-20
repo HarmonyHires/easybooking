@@ -1,8 +1,9 @@
-<div class="drawer-side z-50 shadow-lg lg:z-[9999] lg:outline-base-content/20">
+<div class="lg:drawer-side !relative max-lg:!hidden !w-64"></div>
+<div class="max-lg:drawer-side lg:fixed z-50 shadow-lg lg:z-[9999] lg:outline-base-content/20">
     <label for="sidebar-nav" aria-label="close sidebar" class="drawer-overlay"></label>
-    <div class="max-w-full min-h-full bg-base-100 shadow-lg">
+    <div class="max-w-full min-h-screen bg-base-100 shadow-lg">
         <div id="drawer-title-parent"
-            class="w-full transition-all z-[1000] border-b-[1px] border-base-content/20 shadow navbar justify-center items-stretch lg:px-5 md:px-10 sticky top-0">
+            class="w-full transition-all z-[1000] border-b-[1px] border-base-content/20 shadow navbar justify-center items-stretch lg:px-5 md:px-10">
             <div class="max-lg:container lg:w-full flex justify-between items-stretch">
                 <div id="drawer-title"
                     class="text-xl font-semibold select-none rounded-sm px-5 flex justify-center items-center">Menu</div>
@@ -51,7 +52,7 @@
             </a>
             <a role="list" href="{{ route('categories.index') }}" class="drawer-links">
                 <span class="drawer-links-icon text-xl icon-[ic--round-home]"></span>
-                <span class="drawer-links-name">Venue</span>
+                <span class="drawer-links-name">Category</span>
             </a>
             {{-- <li class="mb-1 max-lg:mb-4 rounded-full max-lg:opacity-0 max-w-full h-[2px] bg-primary/60"></li> --}}
         </ul>
