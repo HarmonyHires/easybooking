@@ -109,6 +109,9 @@ const AnimationFunction = () => {
                     .querySelector("#sidebar-ul")
                     .classList.add("w-64", "px-6");
                 document
+                    .querySelectorAll(".menu-custom :where(li ul)")
+                    .forEach((e) => e.classList.remove("menu-custom-no-line"));
+                document
                     .querySelector("#sidebar-ul")
                     .classList.remove("w-20", "px-2");
                 document.querySelectorAll(".drawer-links-name").forEach((e) => {
@@ -128,11 +131,9 @@ const AnimationFunction = () => {
                 document
                     .querySelector("#sidebar-ul")
                     .classList.remove("w-64", "px-6");
-                // document
-                //     .querySelectorAll("#sidebar-ul > li:has( > input)")
-                //     .forEach((e) =>
-                //         console.log((e.querySelector("input").checked = false))
-                //     );
+                document
+                    .querySelectorAll(".menu-custom :where(li ul)")
+                    .forEach((e) => e.classList.add("menu-custom-no-line"));
                 document
                     .querySelector("#sidebar-ul")
                     .classList.add("w-20", "px-2");

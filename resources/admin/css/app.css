@@ -90,6 +90,23 @@
         margin-inline-start: 1rem;
         padding-inline-start: 0.5rem;
     }
+    .menu-custom-no-line {
+        margin-inline-start: 0 !important;
+        padding-inline-start: 0 !important;
+    }
+    .menu-custom-no-line::before {
+        display: none !important;
+    }
+    .menu-custom
+        :where(li):not(.drawer-links):has(.menu-custom-no-line)::after {
+        display: none !important;
+    }
+    .menu-custom
+        :where(li):not(.drawer-links):has(> input:checked)
+        > label
+        > div {
+        @apply btn-active;
+    }
     .menu-custom :where(li):not(.drawer-links) {
         @apply collapse rounded-none;
     }
@@ -98,7 +115,7 @@
         top: 1rem;
         right: 1.25rem;
         display: block;
-        margin-top: -0.30rem;
+        margin-top: -0.3rem;
         height: 0.5rem;
         width: 0.5rem;
         transform: rotate(45deg);
@@ -110,8 +127,8 @@
         box-shadow: 2px 2px;
         pointer-events: none;
     }
-    .menu-custom :where(li):not(.drawer-links):has( > input:checked)::after {
+    .menu-custom :where(li):not(.drawer-links):has(> input:checked)::after {
         transform: rotate(225deg);
-        margin-top: -0.20rem;
+        margin-top: -0.2rem;
     }
 }
