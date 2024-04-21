@@ -20,11 +20,12 @@
 <body data-barba="wrapper" class="flex justify-center bg-base-200">
     <div id="main" class="drawer lg:drawer-open h-screen 2xl:container bg-base-100">
         <input id="sidebar-nav" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content flex flex-col h-full">
+        <div class="drawer-content flex flex-col h-full justify-between">
             <!-- Navbar -->
             @include('admin.layouts.partials.nav')
             <!-- Content -->
-            <div class="w-full flex-1" data-barba="container">
+            <div class="w-full flex-1" data-barba="container"
+                data-barba-namespace="{{ Route::getCurrentRoute()->getName() }}">
                 @hasSection('content')
                     @yield('content')
                 @endif

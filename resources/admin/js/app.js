@@ -1,3 +1,4 @@
+import barbaInitialize from "./barbaInitialize";
 import "./bootstrap";
 const DEBUG = ![];
 // * !![] == true
@@ -27,34 +28,7 @@ window.mobileAndTabletCheck = function () {
     return check;
 };
 const AnimationFunction = () => {
-    barba.init({
-        // debug: true,
-        transitions: [
-            {
-                name: "opacity-transition",
-                leave(data) {
-                    return gsap.to(data.current.container, {
-                        opacity: 0,
-                        onComplete: () => {
-                            gsap.set(data.current.container, {
-                                display: "none",
-                            });
-                        },
-                    });
-                },
-                enter(data) {
-                    return gsap.from(data.next.container, {
-                        opacity: 0,
-                        onComplete: () => {
-                            gsap.set(data.current.container, {
-                                display: "none",
-                            });
-                        },
-                    });
-                },
-            },
-        ],
-    });
+    barbaInitialize();
     const sectionArray = document.querySelectorAll("[aria-label='content']");
     const sectionPosition = {};
     const offset = document.querySelector(".navbar").offsetHeight;
