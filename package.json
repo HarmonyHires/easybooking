@@ -1,6 +1,7 @@
 {
     "private": true,
     "type": "module",
+    "author": ["SattyaP", "Faiz"],
     "scripts": {
         "dev": "vite",
         "serve": "php artisan serve",
